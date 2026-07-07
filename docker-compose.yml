@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: fastapi_ai_starter
+      POSTGRES_USER: fastapi_user
+      POSTGRES_PASSWORD: fastapi_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fastapi_user -d fastapi_ai_starter"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8001:8000"
+    environment:
+      APP_DATABASE_URL: postgresql+psycopg://fastapi_user:fastapi_password@db:5432/fastapi_ai_starter
+      APP_JWT_SECRET_KEY: local-development-secret-key-with-at-least-32-bytes
+
+volumes:
+  postgres_data:
