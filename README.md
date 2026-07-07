@@ -109,13 +109,6 @@ DELETE /documents/{id}
 GET /documents?limit=20&offset=0
 ```
 
-## Próximos passos
-
-- Adicionar embeddings
-- Adicionar RAG
-- Integrar OpenAI/Gemini
-- Adicionar banco vetorial
-
 ## Configuração
 
 Copie `.env.example` para `.env` se quiser customizar a execucao local:
