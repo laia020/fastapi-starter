@@ -140,17 +140,3 @@ Voltar uma migration:
 ```powershell
 alembic downgrade -1
 ```
-
-## Mapa mental para quem vem de .NET
-
-| .NET | Python/FastAPI |
-| --- | --- |
-| Program.cs | `app/main.py` |
-| Controller | `api/routes` |
-| DTO / Request / Response | `schemas` |
-| Entity | `models` |
-| Service | `services` |
-| Repository | `repositories` |
-| DbContext / Session | `db/database.py` |
-| appsettings.json | `.env` + `core/config.py` |
-| Authentication/JWT | `core/security.py` |
